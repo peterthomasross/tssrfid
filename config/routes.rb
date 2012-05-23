@@ -1,9 +1,13 @@
 Tssrfid::Application.routes.draw do
+  get "page/landing"
+
   resources :bookings
 
   resources :events
 
   resources :users
+  
+  root :to => 'page#landing'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
