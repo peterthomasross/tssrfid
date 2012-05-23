@@ -43,6 +43,13 @@
     <%= f.label :rfid %><br />
     <%= f.text_field :rfid %>
   </div>
+  <% Event.all.each do |event| -%>
+    <div>
+      <%= check_box_tag :event_ids, event.id, @user.events.include?(event), :name => "user[event_ids][]" -%>
+      <%= label_tag :event_ids, event.name -%>
+    </div>
+  <% end -%>
+
   <div class="actions">
     <%= f.submit %>
   </div>

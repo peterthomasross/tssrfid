@@ -43,3 +43,22 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<h2>Selected Events</h2>
+<ul>
+<% @user.events.each do |event| %>
+	<li>
+		<%= event.name %>
+	</li>
+<% end %>
+</ul>
+
+<h2>All Events</h2>
+<ul>
+<% Event.all.each do |event| %>
+	<li>
+		<%= event.name %>
+	</li>
+<% end %>
+</ul>
+

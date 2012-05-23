@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    # @user.attributes = {'event_ids' => []}.merge(params[:user] || {})
   end
 
   # POST /users
@@ -56,6 +57,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+    params[:user][:event_ids] ||= []
     @user = User.find(params[:id])
 
     respond_to do |format|
