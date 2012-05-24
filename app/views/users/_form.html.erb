@@ -11,46 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :forename %><br />
-    <%= f.text_field :forename %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile %><br />
-    <%= f.text_field :mobile %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br />
-    <%= f.text_field :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :rfid %><br />
-    <%= f.text_field :rfid %>
-  </div>
-  <% Event.all.each do |event| -%>
-    <div>
-      <%= check_box_tag :event_ids, event.id, @user.events.include?(event), :name => "user[event_ids][]" -%>
-      <%= label_tag :event_ids, event.name -%>
-    </div>
-  <% end -%>
+<div class="row">
+  <div class="span4">
+  	  <div class="field">
+	    <%= f.label :forename %>
+	    <%= f.text_field :forename %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :surname %>
+	    <%= f.text_field :surname %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :address %>
+	    <%= f.text_field :address %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :postcode %>
+	    <%= f.text_field :postcode %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :mobile %>
+	    <%= f.text_field :mobile %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :email %>
+	    <%= f.text_field :email %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :notes %>
+	    <%= f.text_field :notes %>
+	  </div>
 
-  <div class="actions">
-    <%= f.submit %>
   </div>
+  <div class="span4">
+	<div class="field">
+  	  <% Event.all.each do |event| -%>
+	    <div>
+		<%= label_tag :event_ids, :class => "checkbox" do %>
+	    	<%= check_box_tag :event_ids, event.id, @user.events.include?(event), :name => "user[event_ids][]" %> <%= event.name %>
+		<% end %>
+	    </div>
+	  <% end -%>
+	</div>
+	  <div class="field">
+	    <%= f.label :rfid %>
+	    <%= f.text_field :rfid %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit :class => "btn btn-danger", :style => "color:white" %>
+	  </div>
+  </div>
+</div>
+
 <% end %>

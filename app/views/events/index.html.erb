@@ -1,6 +1,10 @@
 <h1>Listing events</h1>
 
-<table>
+<p class="pull-right">
+<%= link_to 'New Event', new_event_path, :class => "btn btn-danger", :style => "color:white"  %>
+</p>
+
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Date</th>
@@ -12,7 +16,7 @@
 <% @events.each do |event| %>
   <tr>
     <td><%= event.name %></td>
-    <td><%= event.date %></td>
+    <td><%= event.date.strftime("%a %d/%m/%Y") %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
@@ -21,5 +25,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Event', new_event_path %>

@@ -7,7 +7,7 @@ Tssrfid::Application.routes.draw do
 
   resources :users
   
-  root :to => 'page#landing'
+  root :to => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,59 +1,66 @@
+
+<%= form_tag users_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
 <p id="notice"><%= notice %></p>
-<h2>User Details</h2>
-<p>
-  <b>Forename:</b>
-  <%= @user.forename %>
-</p>
+<div class="row">
+	<div class="span4">
+		<p>
+			<h2><%= "#{@user.forename} #{@user.surname}" %></h2>
+		</p>
+		<p>
+		  <b>Address:</b>
+		  <%= @user.address %>
+		</p>
 
-<p>
-  <b>Surname:</b>
-  <%= @user.surname %>
-</p>
+		<p>
+		  <b>Postcode:</b>
+		  <%= @user.postcode %>
+		</p>
 
-<p>
-  <b>Address:</b>
-  <%= @user.address %>
-</p>
+		<p>
+		  <b>Mobile:</b>
+		  <%= @user.mobile %>
+		</p>
 
-<p>
-  <b>Postcode:</b>
-  <%= @user.postcode %>
-</p>
+		<p>
+		  <b>Email:</b>
+		  <%= @user.email %>
+		</p>
 
-<p>
-  <b>Mobile:</b>
-  <%= @user.mobile %>
-</p>
+		<p>
+		  <b>Notes:</b>
+		  <%= @user.notes %>
+		</p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+		<p>
+		  <b>Rfid:</b>
+		  <%= @user.rfid %>
+		</p>
 
-<p>
-  <b>Notes:</b>
-  <%= @user.notes %>
-</p>
-
-<p>
-  <b>Rfid:</b>
-  <%= @user.rfid %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-<h2>Paid for Events:</h2>
-<ul>
-
-	<% @user.events.each do |event| %>
-		<li>
-			<%= event.name %>, <%= event.date %>
+		<%= link_to 'Edit', edit_user_path(@user), :class => "btn btn-danger", :style => "color:white" %>
+		
+	</div>
+	<div class="span8">
+		<p>
+		<h3>Paid for Events:</h3>
+		<ul>
+			<% @events.each do |event| %>
+				<li>
+					<%= event.name %>, <%= event.date.strftime("%a %d/%m/%Y") %>
+				</li>
 			<% end %>	
-		</li>
+		</ul>
+		</p>
+		
+	</div>
+</div>
 
-	</ul>
+
+
 
 
 

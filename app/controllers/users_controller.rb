@@ -2,11 +2,20 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+    
+  end
+  
+  
+  def index
+    if params[:search]
+      @user = User.search(params[:search]) 
+      if @user.nil?
+        @users = User.all
+      else
+        redirect_to @user 
+      end
+    else
+      @users = User.all
     end
   end
 
@@ -14,7 +23,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    @events = @user.events.order("date")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -82,8 +91,6 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def index
-    @users = User.search(params[:search])
-  end 
+
 end
 

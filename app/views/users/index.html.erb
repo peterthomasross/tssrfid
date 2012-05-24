@@ -6,17 +6,15 @@
     <%= submit_tag "Search" %>
   </p>
 <% end %>
-
-<table>
+<p class="pull-right">
+	<%= link_to 'New User', new_user_path, :class => "btn btn-danger", :style => "color:white" %>
+</p>
+<table class="table table-striped">
   <tr>
-    <th>Forename</th>
-    <th>Surname</th>
-    <th>Address</th>
+    <th>Name</th>
     <th>Postcode</th>
     <th>Mobile</th>
-    <th>Email</th>
-    <th>Notes</th>
-    <th>Rfid</th>
+    <th>RFID</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,13 +22,9 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.forename %></td>
-    <td><%= user.surname %></td>
-    <td><%= user.address %></td>
+    <td><%= "#{user.forename} #{user.surname}" %></td>
     <td><%= user.postcode %></td>
     <td><%= user.mobile %></td>
-    <td><%= user.email %></td>
-    <td><%= user.notes %></td>
     <td><%= user.rfid %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
@@ -40,8 +34,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New User', new_user_path %>
 
 
    
