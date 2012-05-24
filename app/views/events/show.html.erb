@@ -1,15 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<div class="row">
+	<div class="span4">
+		<p>
+		  <b>Name:</b>
+		  <%= @event.name %>
+		</p>
 
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
+		<p>
+		  <b>Date:</b>
+		  <%= @event.date.strftime("%a %d/%m/%Y") %>
+		</p>
+		
+		<%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-danger", :style => "color:white"  %>
+	</div>
+	<div class="span8">
+		<h2>Attending</h2>
+		<ul>
+		<% @event.users.each do |user| %>
+			<li>
+				<%= link_to "#{user.forename} #{user.surname}", user%>
+			</li>
+		<% end %>
+		</ul>
+	</div>
+
+</div>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
