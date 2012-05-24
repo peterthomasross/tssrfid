@@ -82,4 +82,8 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def index
+    @users = User.search(params[:search])
+  end 
 end
+

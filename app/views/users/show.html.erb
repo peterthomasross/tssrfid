@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h2>User Details</h2>
 <p>
   <b>Forename:</b>
   <%= @user.forename %>
@@ -44,23 +44,18 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-<h2>Selected Events</h2>
+<h2>Paid for Events:</h2>
 <ul>
-<% @user.events.each do |event| %>
-	<li>
-		<%= event.name %>
-	</li>
-<% end %>
-</ul>
 
-<h2>All Events</h2>
-<ul>
-<% Event.all.each do |event| %>
-	<li>
-		<%= event.name %>
-	</li>
-<% end %>
-</ul>
+	<% @user.events.each do |event| %>
+		<li>
+			<%= event.name %>, <%= event.date %>
+			<% end %>	
+		</li>
+
+	</ul>
+
+
 
 
 
