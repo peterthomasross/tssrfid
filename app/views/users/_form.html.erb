@@ -47,8 +47,8 @@
 	<div class="field">
   	  <% Event.all.each do |event| -%>
 	    <div>
-		<%= label_tag :event_ids, :class => "checkbox" do %>
-	    	<%= check_box_tag :event_ids, event.id, @user.events.include?(event), :name => "user[event_ids][]" %> <%= event.name %>
+		<%= label_tag "event#{event.id}", :class => "checkbox" do %>
+	    	<%= check_box_tag "event#{event.id}", event.id, @user.events.include?(event), :name => "user[event_ids][]" %> <%= event.name %>
 		<% end %>
 	    </div>
 	  <% end -%>
